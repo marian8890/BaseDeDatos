@@ -1,0 +1,55 @@
+Nivel 1
+Insertar un nuevo cliente llamado "Laura Sánchez" con el email "laura.sanchez@email.com", teléfono "555-4321" y dirección "Calle Libertad 789".
+-insert into clientes (nombre, email, telefono, direccion) values ('Laura Sanchez', 'laura.sanchez@email.com', '555-4321', 'Calle Libertad 789');
+
+Insertar un nuevo producto llamado "Tablet" con descripción "Tablet 10 pulgadas", precio de 350.00 y stock de 20 unidades.
+-insert into Productos (nombre, descripcion, precio, stock) VALUES
+('Tablet', 'Tablet 10 pulgadas', 350.00, 20);
+
+Actualizar el teléfono del cliente "María Gómez" a "555-6789".
+-update Clientes set telefono=555-6789 where cliente_id=2;
+
+Eliminar el producto con producto_id = 5 (Teclado mecánico).
+-delete from Productos where producto_id = 5;
+
+Seleccionar todos los clientes junto con su email.
+-select nombre, email from clientes;
+
+Seleccionar todos los productos con un precio mayor a 500.
+-select nombre from productos where precio>500.00;
+
+Nivel 2
+Mostrar todos los productos junto con su stock disponible, pero solo aquellos cuyo stock sea mayor a 10.
+-select nombre, stock from productos where stock>10;
+
+Obtener todas las órdenes realizadas por "Carlos Ruiz" mostrando el orden_id, fecha_orden y el total.
+-select orden_id, fecha_orden, total from Ordenes
+inner join clientes on ordenes.cliente_id=clientes.cliente_id where clientes.nombre = "Carlos Ruiz";
+
+Obtener todos los productos cuyo nombre comience con la letra "T".
+-select*from productos where nombre like 'T%';
+
+Obtener el total de dinero gastado por "Juan Pérez" en todas sus órdenes.
+-select sum(total) from ordenes 
+inner join clientes on ordenes.orden_id= clientes.cliente_id where clientes.nombre = 'Juan Perez';
+
+Contar cuántos clientes están registrados en la base de datos.
+-select count(*) from clientes;
+
+Obtener el producto más caro.
+-select max(precio) from productos;
+
+Obtener el precio promedio de todos los productos en la tienda.
+-select avg(precio) from productos; 
+
+Mostrar el precio más bajo de todos los productos.
+-select min(precio) from productos;
+
+Calcular el total de unidades disponibles en stock para todos los productos.
+-select sum(stock) from productos;
+
+Mostrar el precio promedio de los productos cuyo stock sea mayor a 10 unidades.
+-select avg(precio) from productos where stock>10;
+
+Obtener el total de dinero en inventario sumando el valor de todos los productos (precio x stock).
+-select sum(precio*stock) from productos;
